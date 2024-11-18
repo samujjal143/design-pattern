@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.builder.Computer;
+import org.example.builder.ComputerBuilder;
+import org.example.builder.ComputerDirector;
+import org.example.builder.DesktopComputerBuilder;
 import org.example.singleton.SimpleSingleton;
 import org.example.singleton.ThreadSafeSingleton;
 
@@ -11,13 +15,20 @@ public class Main {
         System.out.println("""
                 Select a design pattern
                 1. Singleton
+                2. Builder
                 """);
         int num = sc.nextInt();
         switch (num) {
-            case 1:
+            case 1 -> {
                 SimpleSingleton.getInstance("simple singleton");
                 ThreadSafeSingleton.getInstance("thread safe singleton");
-                break;
+            }
+            case 2 -> {
+                ComputerBuilder desktopBuilder = new DesktopComputerBuilder();
+                ComputerDirector director = new ComputerDirector(desktopBuilder);
+                Computer desktop = director.constructComputer();
+                System.out.println(desktop);
+            }
         }
     }
 }
