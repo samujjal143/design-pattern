@@ -26,3 +26,11 @@
    party class we want to make use of.
    - By following the ADAPTER pattern, we will be applying the Single Responsibility and the Open Closed Principles
    because the adapting behaviour is now separated and we can introduce new adapters without breaking existing code.
+
+4. OBSERVER
+   - The OBSERVER design pattern is a behavioral design pattern that notifies multiple objects, or subscribers about
+   any events that happen to the object they're observing, or publisher.
+   - It allows us to change or take action on a set of objects when and if the state of another object changes and this
+   can be done even if the modifiable set of objects is unknown beforehand or changes dynamically at runtime.
+   - By using this pattern, we will be applying the Open Closed Principle as we can introduce new subscriber classes
+   without having to change the publisher's code, and vice versa if there's a publisher interface.
