@@ -34,3 +34,11 @@
    can be done even if the modifiable set of objects is unknown beforehand or changes dynamically at runtime.
    - By using this pattern, we will be applying the Open Closed Principle as we can introduce new subscriber classes
    without having to change the publisher's code, and vice versa if there's a publisher interface.
+
+5. STATE
+   - The STATE pattern is a behavioral design pattern that allows an object alter its behavior when its internal state
+   changes. This allows us to avoid primitive if-else statements and extract each logic to a separate classes and let 
+   the context delegate the behavior to the corresponding state class.
+   - By following the STATE pattern, we will be applying the Single Responsibility and the Open Closed Principles
+   because each state is now organized in a separate class, and we have the ability to introduce new states without
+   changing existing state classes or the context.

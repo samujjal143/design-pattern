@@ -10,6 +10,10 @@ import org.example.observer.StockMarketImpl;
 import org.example.observer.StockObserver;
 import org.example.singleton.SimpleSingleton;
 import org.example.singleton.ThreadSafeSingleton;
+import org.example.state.State;
+import org.example.state.TVContext;
+import org.example.state.TVStartState;
+import org.example.state.TVStopState;
 
 import java.util.Scanner;
 
@@ -22,6 +26,7 @@ public class Main {
                 2. Builder
                 3. Adapter
                 4. Observer
+                5. State
                 """);
         int num = sc.nextInt();
         switch (num) {
@@ -59,6 +64,17 @@ public class Main {
                 stockMarket.removeObserver(investor1);
 
                 stockMarket.setStockPrice("WIPRO", 700.0); // Only investor2 receives the update
+            }
+            case 5 -> {
+                TVContext context = new TVContext();
+                State tvStartState = new TVStartState();
+                State tvStopState = new TVStopState();
+
+                context.setState(tvStartState);
+                context.doAction();
+
+                context.setState(tvStopState);
+                context.doAction();
             }
         }
     }
