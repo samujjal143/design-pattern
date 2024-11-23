@@ -37,7 +37,15 @@
    - By following the ADAPTER pattern, we will be applying the Single Responsibility and the Open-Closed Principles
    because the adapting behaviour is now separated and we can introduce new adapters without breaking existing code.
 
-5. OBSERVER
+5. STRATEGY
+   - The STRATEGY pattern is a behavioral design pattern that lets us define a family of algorithms, puts each of them
+   into a separate class, and makes their objects interchangeable. By doing this, our several behaviors or strategies 
+   will be easily replaceable and interchangeable by clients at runtime.
+   - By following the STRATEGY pattern, we will be following the Single Responsibility and the Open-Closed Principles
+   because each strategy is isolated in a separate class and we can easily introduce new strategies without modifying
+   the existing strategy classes nor the context.
+   
+6. OBSERVER
    - The OBSERVER design pattern is a behavioral design pattern that notifies multiple objects, or subscribers about
    any events that happen to the object they're observing, or publisher.
    - It allows us to change or take action on a set of objects when and if the state of another object changes and this
@@ -45,7 +53,7 @@
    - By using this pattern, we will be applying the Open-Closed Principle as we can introduce new subscriber classes
    without having to change the publisher's code, and vice versa if there's a publisher interface.
 
-6. STATE
+7. STATE
    - The STATE pattern is a behavioral design pattern that allows an object alter its behavior when its internal state
    changes. This allows us to avoid primitive if-else statements and extract each logic to a separate classes and let 
    the context delegate the behavior to the corresponding state class.

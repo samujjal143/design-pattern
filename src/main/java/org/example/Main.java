@@ -18,6 +18,10 @@ import org.example.state.State;
 import org.example.state.TVContext;
 import org.example.state.TVStartState;
 import org.example.state.TVStopState;
+import org.example.strategy.EasyLevel;
+import org.example.strategy.Game;
+import org.example.strategy.MediumLevel;
+import org.example.strategy.HardLevel;
 
 import java.util.Scanner;
 
@@ -30,8 +34,9 @@ public class Main {
                 2. Builder
                 3. Factory Method
                 4. Adapter
-                5. Observer
-                6. State
+                5. Strategy
+                6. Observer
+                7. State
                 """);
         int num = sc.nextInt();
         switch (num) {
@@ -66,6 +71,17 @@ public class Main {
                 stripeGateway.processPayment(amount);
             }
             case 5 -> {
+                Game game = new Game(new EasyLevel());
+
+                game.startGame();  // Start game with easy difficulty
+
+                game.setDifficultyLevel(new MediumLevel());
+                game.startGame();  // Switch to medium difficulty
+
+                game.setDifficultyLevel(new HardLevel());
+                game.startGame();  // Play on hard difficulty
+            }
+            case 6 -> {
                 StockMarketImpl stockMarket = new StockMarketImpl();
 
                 StockObserver investor1 = new Investor("Alice");
@@ -81,7 +97,7 @@ public class Main {
 
                 stockMarket.setStockPrice("WIPRO", 700.0); // Only investor2 receives the update
             }
-            case 6 -> {
+            case 7 -> {
                 TVContext context = new TVContext();
                 State tvStartState = new TVStartState();
                 State tvStopState = new TVStopState();
@@ -92,6 +108,7 @@ public class Main {
                 context.setState(tvStopState);
                 context.doAction();
             }
+            default -> throw new IllegalStateException("Unexpected value: " + num);
         }
     }
 }
