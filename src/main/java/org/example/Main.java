@@ -5,6 +5,10 @@ import org.example.builder.Computer;
 import org.example.builder.ComputerBuilder;
 import org.example.builder.ComputerDirector;
 import org.example.builder.DesktopComputerBuilder;
+import org.example.factory.Dish;
+import org.example.factory.DishFactory;
+import org.example.factory.PizzaFactory;
+import org.example.factory.SushiFactory;
 import org.example.observer.Investor;
 import org.example.observer.StockMarketImpl;
 import org.example.observer.StockObserver;
@@ -24,9 +28,10 @@ public class Main {
                 Select a design pattern
                 1. Singleton
                 2. Builder
-                3. Adapter
-                4. Observer
-                5. State
+                3. Factory Method
+                4. Adapter
+                5. Observer
+                6. State
                 """);
         int num = sc.nextInt();
         switch (num) {
@@ -41,6 +46,17 @@ public class Main {
                 System.out.println(desktop);
             }
             case 3 -> {
+                DishFactory pizzaFactory = new PizzaFactory();
+                Dish pizza = pizzaFactory.createDish();
+                pizza.prepare();
+                pizza.serve();
+
+                DishFactory sushiFactory = new SushiFactory();
+                Dish sushi = sushiFactory.createDish();
+                sushi.prepare();
+                sushi.serve();
+            }
+            case 4 -> {
                 PaymentGateway paypalGateway = new PayPalAdapter(new PayPal());
                 PaymentGateway stripeGateway = new StripeAdapter(new Stripe());
 
@@ -49,7 +65,7 @@ public class Main {
                 paypalGateway.processPayment(amount);
                 stripeGateway.processPayment(amount);
             }
-            case 4 -> {
+            case 5 -> {
                 StockMarketImpl stockMarket = new StockMarketImpl();
 
                 StockObserver investor1 = new Investor("Alice");
@@ -65,7 +81,7 @@ public class Main {
 
                 stockMarket.setStockPrice("WIPRO", 700.0); // Only investor2 receives the update
             }
-            case 5 -> {
+            case 6 -> {
                 TVContext context = new TVContext();
                 State tvStartState = new TVStartState();
                 State tvStopState = new TVStopState();

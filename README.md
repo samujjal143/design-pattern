@@ -18,27 +18,37 @@
    - If we are making use of a director class, the client code must create both the builder and the director objects and
    must pass the builder object created to the director.
 
-3. ADAPTER
+3. FACTORY METHOD
+   - The FACTORY METHOD is a creational design pattern. It loosens the coupling of a given code by separating the
+   product's construction code from the code that uses this product. 
+   - If we have no idea beforehand of the exact types and dependencies of the objects our code will work with then we
+   should use this pattern as the factory pattern makes it easy to extend the product construction code
+   independently from the rest of the application and hence allows us to introduce new products without breaking
+   existing code.
+   - By following the FACTORY METHOD pattern, we will be applying the Open-Closed Principle and the Single Responsibility
+   Principle as we are centralizing the product creation code in one place in the program.
+
+4. ADAPTER
    - The ADAPTER pattern is a structural design pattern that allows objects with incompatible interfaces to collaborate
    with one another.
    - It uses inheritance and composition to enable objects with incompatible interfaces to collaborate with one another.
    To do that, it creates a middle layer class that serves as a translator between our code and the legacy of the third
    party class we want to make use of.
-   - By following the ADAPTER pattern, we will be applying the Single Responsibility and the Open Closed Principles
+   - By following the ADAPTER pattern, we will be applying the Single Responsibility and the Open-Closed Principles
    because the adapting behaviour is now separated and we can introduce new adapters without breaking existing code.
 
-4. OBSERVER
+5. OBSERVER
    - The OBSERVER design pattern is a behavioral design pattern that notifies multiple objects, or subscribers about
    any events that happen to the object they're observing, or publisher.
    - It allows us to change or take action on a set of objects when and if the state of another object changes and this
    can be done even if the modifiable set of objects is unknown beforehand or changes dynamically at runtime.
-   - By using this pattern, we will be applying the Open Closed Principle as we can introduce new subscriber classes
+   - By using this pattern, we will be applying the Open-Closed Principle as we can introduce new subscriber classes
    without having to change the publisher's code, and vice versa if there's a publisher interface.
 
-5. STATE
+6. STATE
    - The STATE pattern is a behavioral design pattern that allows an object alter its behavior when its internal state
    changes. This allows us to avoid primitive if-else statements and extract each logic to a separate classes and let 
    the context delegate the behavior to the corresponding state class.
-   - By following the STATE pattern, we will be applying the Single Responsibility and the Open Closed Principles
+   - By following the STATE pattern, we will be applying the Single Responsibility and the Open-Closed Principles
    because each state is now organized in a separate class, and we have the ability to introduce new states without
    changing existing state classes or the context.
