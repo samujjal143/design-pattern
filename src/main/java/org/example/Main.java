@@ -5,6 +5,7 @@ import org.example.builder.Computer;
 import org.example.builder.ComputerBuilder;
 import org.example.builder.ComputerDirector;
 import org.example.builder.DesktopComputerBuilder;
+import org.example.chain_of_responsibility.*;
 import org.example.factory.Dish;
 import org.example.factory.DishFactory;
 import org.example.factory.PizzaFactory;
@@ -37,6 +38,7 @@ public class Main {
                 5. Strategy
                 6. Observer
                 7. State
+                8. Chain of Responsibility
                 """);
         int num = sc.nextInt();
         switch (num) {
@@ -107,6 +109,22 @@ public class Main {
 
                 context.setState(tvStopState);
                 context.doAction();
+            }
+            case 8 -> {
+                SupportHandler level1Handler = new Level1SupportHandler();
+                SupportHandler level2Handler = new Level2SupportHandler();
+                SupportHandler level3Handler = new Level3SupportHandler();
+
+                level1Handler.setNextHandler(level2Handler);
+                level2Handler.setNextHandler(level3Handler);
+
+                Request request1 = new Request(Priority.BASIC);
+                Request request2 = new Request(Priority.INTERMEDIATE);
+                Request request3 = new Request(Priority.CRITICAL);
+
+                level1Handler.handleRequest(request1);
+                level1Handler.handleRequest(request2);
+                level1Handler.handleRequest(request3);
             }
             default -> throw new IllegalStateException("Unexpected value: " + num);
         }

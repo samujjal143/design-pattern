@@ -60,3 +60,16 @@
    - By following the STATE pattern, we will be applying the Single Responsibility and the Open-Closed Principles
    because each state is now organized in a separate class, and we have the ability to introduce new states without
    changing existing state classes or the context.
+
+8. CHAIN OF RESPONSIBILITY
+   - The CHAIN OF RESPONSIBILITY is a behavioral design pattern that lets us transform particular behaviors into
+   standalone objects called handlers. Then upon receiving a request this request will pass along the chain of
+   handlers where each one can decide either to process the request or pass it to the next handler in the chain
+   - We should use the CHAIN OF RESPONSIBILITY pattern when we encounter the need to execute several handlers in a
+   particular order.
+   - Additionally, this pattern is useful when the handlers and their order might change at runtime because we have 
+   the ability to insert, remove or reorder handlers dynamically.
+   - Each handler in a chain must make two decisions when receiving a request. It will either process the request or 
+   it will pass it along the chain. Finally, concerning the client, he may trigger any handler in the chain, not just
+   the first one and the request will be passed along the chain until some handler refuses to pass it further or until
+   it reaches the end of the chain.
