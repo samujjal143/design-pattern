@@ -11,6 +11,8 @@ import org.example.factory.Dish;
 import org.example.factory.DishFactory;
 import org.example.factory.PizzaFactory;
 import org.example.factory.SushiFactory;
+import org.example.flyweight.Character;
+import org.example.flyweight.CharacterFactory;
 import org.example.observer.Investor;
 import org.example.observer.StockMarketImpl;
 import org.example.observer.StockObserver;
@@ -36,11 +38,12 @@ public class Main {
                 2. Builder
                 3. Factory Method
                 4. Adapter
-                5. Strategy
-                6. Observer
-                7. State
-                8. Chain of Responsibility
-                9. Command
+                5. Flyweight
+                6. Strategy
+                7. Observer
+                8. State
+                9. Chain of Responsibility
+                10. Command
                 """);
         int num = sc.nextInt();
         switch (num) {
@@ -75,6 +78,15 @@ public class Main {
                 stripeGateway.processPayment(amount);
             }
             case 5 -> {
+                CharacterFactory characterFactory = new CharacterFactory();
+                org.example.flyweight.Character character1 = characterFactory.getCharacter('A');
+                character1.display("Arial");
+                org.example.flyweight.Character character2 = characterFactory.getCharacter('B');
+                character2.display("Times New Roman");
+                Character character3 = characterFactory.getCharacter('A');
+                character3.display("Calibri");
+            }
+            case 6 -> {
                 Game game = new Game(new EasyLevel());
 
                 game.startGame();  // Start game with easy difficulty
@@ -85,7 +97,7 @@ public class Main {
                 game.setDifficultyLevel(new HardLevel());
                 game.startGame();  // Play on hard difficulty
             }
-            case 6 -> {
+            case 7 -> {
                 StockMarketImpl stockMarket = new StockMarketImpl();
 
                 StockObserver investor1 = new Investor("Alice");
@@ -101,7 +113,7 @@ public class Main {
 
                 stockMarket.setStockPrice("WIPRO", 700.0); // Only investor2 receives the update
             }
-            case 7 -> {
+            case 8 -> {
                 TVContext context = new TVContext();
                 State tvStartState = new TVStartState();
                 State tvStopState = new TVStopState();
@@ -112,7 +124,7 @@ public class Main {
                 context.setState(tvStopState);
                 context.doAction();
             }
-            case 8 -> {
+            case 9 -> {
                 SupportHandler level1Handler = new Level1SupportHandler();
                 SupportHandler level2Handler = new Level2SupportHandler();
                 SupportHandler level3Handler = new Level3SupportHandler();
@@ -128,7 +140,7 @@ public class Main {
                 level1Handler.handleRequest(request2);
                 level1Handler.handleRequest(request3);
             }
-            case 9 -> {
+            case 10 -> {
                 // Create devices
                 TV tv = new TV();
                 Stereo stereo = new Stereo();

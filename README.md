@@ -37,7 +37,17 @@
    - By following the ADAPTER pattern, we will be applying the Single Responsibility and the Open-Closed Principles
    because the adapting behaviour is now separated and we can introduce new adapters without breaking existing code.
 
-5. STRATEGY
+5. FLYWEIGHT
+   - FLYWEIGHT is a structural design pattern that lets us fit more objects into the available RAM by sharing common
+   parts of state between multiple objects, instead of storing all of the data in each object individually
+   - A FLYWEIGHT refers to an object that minimizes memory usage by sharing some of the initial objects' data with
+   other similar objects.
+   - It should be used when a program must support a huge number of similar objects which barely fit into the
+   available amount of RAM
+   - By applying this pattern, we will be splitting the state of the initial object into two: an intrinsic-immutable
+   state and an extrinsic-mutable one
+
+6. STRATEGY
    - The STRATEGY pattern is a behavioral design pattern that lets us define a family of algorithms, puts each of them
    into a separate class, and makes their objects interchangeable. By doing this, our several behaviors or strategies 
    will be easily replaceable and interchangeable by clients at runtime.
@@ -45,7 +55,7 @@
    because each strategy is isolated in a separate class and we can easily introduce new strategies without modifying
    the existing strategy classes nor the context.
    
-6. OBSERVER
+7. OBSERVER
    - The OBSERVER design pattern is a behavioral design pattern that notifies multiple objects, or subscribers about
    any events that happen to the object they're observing, or publisher.
    - It allows us to change or take action on a set of objects when and if the state of another object changes and this
@@ -53,7 +63,7 @@
    - By using this pattern, we will be applying the Open-Closed Principle as we can introduce new subscriber classes
    without having to change the publisher's code, and vice versa if there's a publisher interface.
 
-7. STATE
+8. STATE
    - The STATE pattern is a behavioral design pattern that allows an object alter its behavior when its internal state
    changes. This allows us to avoid primitive if-else statements and extract each logic to a separate classes and let 
    the context delegate the behavior to the corresponding state class.
@@ -61,7 +71,7 @@
    because each state is now organized in a separate class, and we have the ability to introduce new states without
    changing existing state classes or the context.
 
-8. CHAIN OF RESPONSIBILITY
+9. CHAIN OF RESPONSIBILITY
    - The CHAIN OF RESPONSIBILITY is a behavioral design pattern that lets us transform particular behaviors into
    standalone objects called handlers. Then upon receiving a request this request will pass along the chain of
    handlers where each one can decide either to process the request or pass it to the next handler in the chain
@@ -74,7 +84,7 @@
    the first one and the request will be passed along the chain until some handler refuses to pass it further or until
    it reaches the end of the chain.
 
-9. COMMAND
+10. COMMAND
    - The COMMAND is a behavioral design pattern that turns a request or a behavior into a stand-alone object that
    contains everything about that request.
    - It is used to encapsulate all the relevant information needed to perform an action or trigger an event.
