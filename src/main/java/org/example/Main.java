@@ -6,6 +6,7 @@ import org.example.builder.ComputerBuilder;
 import org.example.builder.ComputerDirector;
 import org.example.builder.DesktopComputerBuilder;
 import org.example.chain_of_responsibility.*;
+import org.example.command.*;
 import org.example.factory.Dish;
 import org.example.factory.DishFactory;
 import org.example.factory.PizzaFactory;
@@ -39,6 +40,7 @@ public class Main {
                 6. Observer
                 7. State
                 8. Chain of Responsibility
+                9. Command
                 """);
         int num = sc.nextInt();
         switch (num) {
@@ -125,6 +127,33 @@ public class Main {
                 level1Handler.handleRequest(request1);
                 level1Handler.handleRequest(request2);
                 level1Handler.handleRequest(request3);
+            }
+            case 9 -> {
+                // Create devices
+                TV tv = new TV();
+                Stereo stereo = new Stereo();
+
+                // Create command objects
+                Command turnOnTVCommand = new TurnOnCommand(tv);
+                Command turnOffTVCommand = new TurnOffCommand(tv);
+                Command adjustVolumeStereoCommand = new AdjustVolumeCommand(stereo);
+                Command changeChannelTVCommand = new ChannelChangeCommand(tv);
+
+                // Create remote control
+                RemoteControl remote = new RemoteControl();
+
+                // Set and execute commands
+                remote.setCommand(turnOnTVCommand);
+                remote.pressButton(); // Outputs: TV is now on
+
+                remote.setCommand(adjustVolumeStereoCommand);
+                remote.pressButton(); // Outputs: Volume adjusted
+
+                remote.setCommand(changeChannelTVCommand);
+                remote.pressButton(); // Outputs: Channel changed
+
+                remote.setCommand(turnOffTVCommand);
+                remote.pressButton(); // Outputs: TV is now off
             }
             default -> throw new IllegalStateException("Unexpected value: " + num);
         }

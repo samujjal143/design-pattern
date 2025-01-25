@@ -73,3 +73,11 @@
    it will pass it along the chain. Finally, concerning the client, he may trigger any handler in the chain, not just
    the first one and the request will be passed along the chain until some handler refuses to pass it further or until
    it reaches the end of the chain.
+
+9. COMMAND
+   - The COMMAND is a behavioral design pattern that turns a request or a behavior into a stand-alone object that
+   contains everything about that request.
+   - It is used to encapsulate all the relevant information needed to perform an action or trigger an event.
+   - It opens a lot of interesting uses: such as passing commands as method arguments, storing them inside other
+   objects or even switching commands at runtime.
+   - Commands can be serialized, making it easy to write it to and read from a file.
