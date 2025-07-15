@@ -18,7 +18,14 @@
    - If we are making use of a director class, the client code must create both the builder and the director objects and
    must pass the builder object created to the director.
 
-3. FACTORY METHOD
+3. PROTOTYPE
+   - The PROTOTYPE is a creational design pattern that delegates the object duplication or cloning process to the actual 
+   objects that are being cloned without coupling the creation of the object to its class.
+   - We should use PROTOTYPE pattern when our code shouldn't depend on the concrete classes of the objects that we need
+   to copy or duplicate as this pattern will clone objects without coupling them to their concrete classes.
+   - This will get rid of repeated initialization code and will save resources and time.
+
+4. FACTORY METHOD
    - The FACTORY METHOD is a creational design pattern. It loosens the coupling of a given code by separating the
    product's construction code from the code that uses this product. 
    - If we have no idea beforehand of the exact types and dependencies of the objects our code will work with then we
@@ -28,7 +35,7 @@
    - By following the FACTORY METHOD pattern, we will be applying the Open-Closed Principle and the Single Responsibility
    Principle as we are centralizing the product creation code in one place in the program.
 
-4. ADAPTER
+5. ADAPTER
    - The ADAPTER pattern is a structural design pattern that allows objects with incompatible interfaces to collaborate
    with one another.
    - It uses inheritance and composition to enable objects with incompatible interfaces to collaborate with one another.
@@ -37,7 +44,7 @@
    - By following the ADAPTER pattern, we will be applying the Single Responsibility and the Open-Closed Principles
    because the adapting behaviour is now separated and we can introduce new adapters without breaking existing code.
 
-5. FLYWEIGHT
+6. FLYWEIGHT
    - FLYWEIGHT is a structural design pattern that lets us fit more objects into the available RAM by sharing common
    parts of state between multiple objects, instead of storing all of the data in each object individually
    - A FLYWEIGHT refers to an object that minimizes memory usage by sharing some of the initial objects' data with
@@ -47,7 +54,7 @@
    - By applying this pattern, we will be splitting the state of the initial object into two: an intrinsic-immutable
    state and an extrinsic-mutable one
 
-6. STRATEGY
+7. STRATEGY
    - The STRATEGY pattern is a behavioral design pattern that lets us define a family of algorithms, puts each of them
    into a separate class, and makes their objects interchangeable. By doing this, our several behaviors or strategies 
    will be easily replaceable and interchangeable by clients at runtime.
@@ -55,7 +62,7 @@
    because each strategy is isolated in a separate class and we can easily introduce new strategies without modifying
    the existing strategy classes nor the context.
    
-7. OBSERVER
+8. OBSERVER
    - The OBSERVER design pattern is a behavioral design pattern that notifies multiple objects, or subscribers about
    any events that happen to the object they're observing, or publisher.
    - It allows us to change or take action on a set of objects when and if the state of another object changes and this
@@ -63,7 +70,7 @@
    - By using this pattern, we will be applying the Open-Closed Principle as we can introduce new subscriber classes
    without having to change the publisher's code, and vice versa if there's a publisher interface.
 
-8. STATE
+9. STATE
    - The STATE pattern is a behavioral design pattern that allows an object alter its behavior when its internal state
    changes. This allows us to avoid primitive if-else statements and extract each logic to a separate classes and let 
    the context delegate the behavior to the corresponding state class.
@@ -71,7 +78,7 @@
    because each state is now organized in a separate class, and we have the ability to introduce new states without
    changing existing state classes or the context.
 
-9. CHAIN OF RESPONSIBILITY
+10. CHAIN OF RESPONSIBILITY
    - The CHAIN OF RESPONSIBILITY is a behavioral design pattern that lets us transform particular behaviors into
    standalone objects called handlers. Then upon receiving a request this request will pass along the chain of
    handlers where each one can decide either to process the request or pass it to the next handler in the chain
@@ -84,7 +91,7 @@
    the first one and the request will be passed along the chain until some handler refuses to pass it further or until
    it reaches the end of the chain.
 
-10. COMMAND
+11. COMMAND
    - The COMMAND is a behavioral design pattern that turns a request or a behavior into a stand-alone object that
    contains everything about that request.
    - It is used to encapsulate all the relevant information needed to perform an action or trigger an event.
