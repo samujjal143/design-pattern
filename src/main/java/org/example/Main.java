@@ -16,6 +16,11 @@ import org.example.flyweight.CharacterFactory;
 import org.example.observer.Investor;
 import org.example.observer.StockMarketImpl;
 import org.example.observer.StockObserver;
+import org.example.prototype.BlackSheep;
+import org.example.prototype.Sheep;
+import org.example.prototype.WhiteSheep;
+import org.example.proxy.Image;
+import org.example.proxy.ProxyImage;
 import org.example.singleton.SimpleSingleton;
 import org.example.singleton.ThreadSafeSingleton;
 import org.example.state.State;
@@ -36,14 +41,16 @@ public class Main {
                 Select a design pattern
                 1. Singleton
                 2. Builder
-                3. Factory Method
-                4. Adapter
-                5. Flyweight
-                6. Strategy
-                7. Observer
-                8. State
-                9. Chain of Responsibility
-                10. Command
+                3. Prototype
+                4. Factory Method
+                5. Adapter
+                6. Flyweight
+                7. Proxy
+                8. Strategy
+                9. Observer
+                10. State
+                11. Chain of Responsibility
+                12. Command
                 """);
         int num = sc.nextInt();
         switch (num) {
@@ -58,6 +65,23 @@ public class Main {
                 System.out.println(desktop);
             }
             case 3 -> {
+                // Create prototype sheep
+                Sheep blackPrototype = new BlackSheep("Baa Baa");
+                Sheep whitePrototype = new WhiteSheep("Fleecy");
+
+                // Clone sheep as needed
+                Sheep clonedBlackSheep = blackPrototype.clone();
+                Sheep clonedWhiteSheep = whitePrototype.clone();
+
+                // Customize cloned sheep
+                clonedBlackSheep.setName("Midnight");
+                clonedWhiteSheep.setName("Snowball");
+
+                // Your sheep farm is thriving!
+                System.out.println("Black sheep: " + clonedBlackSheep.getName());
+                System.out.println("White sheep: " + clonedWhiteSheep.getName());
+            }
+            case 4 -> {
                 DishFactory pizzaFactory = new PizzaFactory();
                 Dish pizza = pizzaFactory.createDish();
                 pizza.prepare();
@@ -68,7 +92,7 @@ public class Main {
                 sushi.prepare();
                 sushi.serve();
             }
-            case 4 -> {
+            case 5 -> {
                 PaymentGateway paypalGateway = new PayPalAdapter(new PayPal());
                 PaymentGateway stripeGateway = new StripeAdapter(new Stripe());
 
@@ -77,7 +101,7 @@ public class Main {
                 paypalGateway.processPayment(amount);
                 stripeGateway.processPayment(amount);
             }
-            case 5 -> {
+            case 6 -> {
                 CharacterFactory characterFactory = new CharacterFactory();
                 org.example.flyweight.Character character1 = characterFactory.getCharacter('A');
                 character1.display("Arial");
@@ -86,7 +110,17 @@ public class Main {
                 Character character3 = characterFactory.getCharacter('A');
                 character3.display("Calibri");
             }
-            case 6 -> {
+            case 7 -> {
+                Image image1 = new ProxyImage("image1.jpg");
+                Image image2 = new ProxyImage("image2.jpg");
+
+                image1.display(); // Image 1 will be loaded and displayed
+                image2.display(); // Image 2 will be loaded and displayed
+
+                // Image 1 is already loaded, so it will be displayed without loading again
+                image1.display();
+            }
+            case 8 -> {
                 Game game = new Game(new EasyLevel());
 
                 game.startGame();  // Start game with easy difficulty
@@ -97,7 +131,7 @@ public class Main {
                 game.setDifficultyLevel(new HardLevel());
                 game.startGame();  // Play on hard difficulty
             }
-            case 7 -> {
+            case 9 -> {
                 StockMarketImpl stockMarket = new StockMarketImpl();
 
                 StockObserver investor1 = new Investor("Alice");
@@ -113,7 +147,7 @@ public class Main {
 
                 stockMarket.setStockPrice("WIPRO", 700.0); // Only investor2 receives the update
             }
-            case 8 -> {
+            case 10 -> {
                 TVContext context = new TVContext();
                 State tvStartState = new TVStartState();
                 State tvStopState = new TVStopState();
@@ -124,7 +158,7 @@ public class Main {
                 context.setState(tvStopState);
                 context.doAction();
             }
-            case 9 -> {
+            case 11 -> {
                 SupportHandler level1Handler = new Level1SupportHandler();
                 SupportHandler level2Handler = new Level2SupportHandler();
                 SupportHandler level3Handler = new Level3SupportHandler();
@@ -140,7 +174,7 @@ public class Main {
                 level1Handler.handleRequest(request2);
                 level1Handler.handleRequest(request3);
             }
-            case 10 -> {
+            case 12 -> {
                 // Create devices
                 TV tv = new TV();
                 Stereo stereo = new Stereo();
